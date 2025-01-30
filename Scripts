@@ -1,0 +1,12 @@
+# Assign roles to users in Active Directory
+$users = Get-ADUser -Filter * -SearchBase "OU=Users,DC=example,DC=com"
+foreach ($user in $users) {
+    $role = "User" # Default role
+    if ($user.SamAccountName -eq "admin") {
+        $role = "Admin"
+    } elseif ($user.SamAccountName -eq "guest") {
+        $role = "Guest"
+    }
+    Set-ADUser -Identity $user -Description $role
+    Write-Host "Assigned role '$role' to user '$($user.SamAccountName)'"
+}
