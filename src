@@ -1,0 +1,24 @@
+public class RBAC {
+    public static void main(String[] args) {
+        // Define roles and permissions
+        String[] adminPermissions = {"create", "read", "update", "delete"};
+        String[] userPermissions = {"read", "update"};
+        String[] guestPermissions = {"read"};
+
+        // Assign roles to users
+        String userRole = "Admin"; // Example role
+        switch (userRole) {
+            case "Admin":
+                System.out.println("Admin Permissions: " + String.join(", ", adminPermissions));
+                break;
+            case "User":
+                System.out.println("User Permissions: " + String.join(", ", userPermissions));
+                break;
+            case "Guest":
+                System.out.println("Guest Permissions: " + String.join(", ", guestPermissions));
+                break;
+            default:
+                System.out.println("Invalid role.");
+        }
+    }
+}
